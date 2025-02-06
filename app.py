@@ -1,12 +1,12 @@
+# app.py
 import streamlit as st
-import streamlit_analytics
+from components.ga4_component import ga4
 
-# Replace with your Google Analytics tracking ID
-GA_TRACKING_ID = "G-SGLY9K9D0H"
+GA_ID = "G-SGLY9K9D0H"  # Replace with your Measurement ID
 
-# Start tracking
-streamlit_analytics.track(unsafe_password="your_password", ga_tracking_id=GA_TRACKING_ID)
+ga4(GA_ID)  # Place this near the top of your app
 
-# Your Streamlit app code
-st.title("My Streamlit App")
-st.write("Welcome to my app!")
+st.title("My Streamlit App with GA4")
+st.write("Welcome!")
+
+# ... rest of your Streamlit app
