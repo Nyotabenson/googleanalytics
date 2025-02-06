@@ -1,19 +1,18 @@
 import streamlit as st
 import streamlit.components.v1 as components
-import pathlib
 
-def load_html_page():
-    # Path to your HTML file
-    html_path = pathlib.Path('index.html')
+# Path to your custom index.html file
+index_html_path = 'index.html'
 
-    if html_path.exists():
-        # Read the HTML content
-        html_content = html_path.read_text()
-        
-        # Render HTML with GA script using streamlit components
-        components.html(html_content, height=600)  # You can adjust the height as needed
-    else:
-        st.error("HTML file not found!")
+# Read the custom HTML file
+with open(index_html_path, 'r') as file:
+    custom_html = file.read()
 
-# Run the function to display the HTML content
-load_html_page()
+# Inject the custom HTML into the Streamlit app using components.html
+components.html(custom_html, height=0)  # height=0 means we don't need to render anything visually
+
+# Now add Streamlit-specific content below the injected HTML
+st.write("This is dynamic content injected by Streamlit!")
+
+# You can continue adding Streamlit widgets, charts, etc.
+st.button("Click Me")
