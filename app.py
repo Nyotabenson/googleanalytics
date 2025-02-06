@@ -1,18 +1,17 @@
 import streamlit as st
-import streamlit.components.v1 as components
 
-# Path to your custom index.html file
-index_html_path = 'index.html'
+# Add Google Analytics script to the page
+google_analytics_tracking_id = "G-SGLY9K9D0H"  # Replace with your Google Analytics tracking ID
 
-# Read the custom HTML file
-with open(index_html_path, 'r') as file:
-    custom_html = file.read()
+st.markdown(f"""
+    <script async src="https://www.googletagmanager.com/gtag/js?id={google_analytics_tracking_id}"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){{dataLayer.push(arguments);}}
+    gtag('js', new Date());
+    gtag('config', '{google_analytics_tracking_id}');
+    </script>
+    """, unsafe_allow_html=True)
 
-# Inject the custom HTML into the Streamlit app using components.html
-components.html(custom_html, height=0)  # height=0 means we don't need to render anything visually
-
-# Now add Streamlit-specific content below the injected HTML
-st.write("This is dynamic content injected by Streamlit!")
-
-# You can continue adding Streamlit widgets, charts, etc.
-st.button("Click Me")
+st.title("My Streamlit App")
+st.write("Welcome to my Streamlit app with Google Analytics!")
