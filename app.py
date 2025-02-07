@@ -1,5 +1,9 @@
 import streamlit as st
 import streamlit.components.v1 as components
 
-# Embed the external HTML file using an iframe
-components.html('<iframe src="https://nyotabenson.github.io/googleanalytics/" width="100%" height="600"></iframe>', height=600)
+# Read the HTML file
+with open('index.html', 'r') as f:
+    html_content = f.read()
+
+# Embed the HTML in Streamlit app
+components.html(html_content, height=600)
